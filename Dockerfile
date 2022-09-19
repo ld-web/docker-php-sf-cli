@@ -1,5 +1,8 @@
 FROM php:7.4-fpm AS php_default
-RUN apt-get update && apt-get install -y --no-install-recommends git zlib1g-dev libzip-dev unzip libicu-dev libonig-dev
+RUN apt-get update && apt-get install -y --no-install-recommends git wget zlib1g-dev libzip-dev unzip libicu-dev libonig-dev
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \
+  -t agnoster \
+  -p git -p symfony
 RUN mkdir /run/php
 ADD conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 ADD conf/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
