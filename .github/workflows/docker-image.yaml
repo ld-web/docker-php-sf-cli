@@ -38,5 +38,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.IMAGE_NAME }}:latest, ${{ env.IMAGE_NAME }}:7.4
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
