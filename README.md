@@ -1,15 +1,18 @@
-# PHP7.4 + Symfony CLI Docker custom image
+# PHP + Symfony CLI Docker custom image
+
+This Docker image aims to be instantiated when wanting to work locally on PHP and/or Symfony.
 
 ## Build
 
 ```bash
-docker build -t ld-web/php:7.4-fpm-sf .
+docker build -t ld-web/php-sf-cli .
 ```
 
 ## Run
 
 ```bash
-docker run -d --name php7.4 -v $(pwd)/php:/php ld-web/php:7.4-fpm-sf
+# Map a directory to a /php folder created in the container
+docker run -d --name php-sf -v $(pwd)/php:/php ld-web/php-sf-cli
 ```
 
 ## Oh My Zsh
@@ -19,9 +22,5 @@ Oh My Zsh is installed into the container.
 It can be launched from CLI :
 
 ```bash
-docker exec -it php7.4 zsh
+docker exec -it php-sf zsh
 ```
-
-If container was attached to VSCode, then from a terminal using default bash, run `zsh`
-
-> **TODO :** See how to make VSCode launch `zsh` directly
